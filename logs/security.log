@@ -1,0 +1,4 @@
+{"asctime": "2026-05-16 22:36:15,503", "levelname": "WARNING", "module": "log", "message": "Forbidden (CSRF token from POST incorrect.): /admin/login/", "status_code": 403, "request": "<WSGIRequest: POST '/admin/login/'>"}
+{"asctime": "2026-05-16 22:37:40,775", "levelname": "WARNING", "module": "log", "message": "Forbidden (CSRF token from POST incorrect.): /admin/login/", "status_code": 403, "request": "<WSGIRequest: POST '/admin/login/'>"}
+{"asctime": "2026-05-16 22:37:48,117", "levelname": "WARNING", "module": "log", "message": "Forbidden (CSRF token from POST incorrect.): /admin/login/", "status_code": 403, "request": "<WSGIRequest: POST '/admin/login/'>"}
+{"asctime": "2026-05-16 22:44:10,247", "levelname": "WARNING", "module": "log", "message": "Forbidden (CSRF token from POST incorrect.): /admin/login/", "status_code": 403, "request": "<WSGIRequest: POST '/admin/login/'>"}

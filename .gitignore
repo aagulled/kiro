@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual env
+venv/
+env/
+.venv/
+pyvenv.cfg
+
+# Django
+db.sqlite3
+media/
+staticfiles/
+
+# Logs
+logs/
+*.log
+
+# Environment variables (IMPORTANT for Postgres creds)
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
