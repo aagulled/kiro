@@ -45,6 +45,7 @@ class PropertyListView(generics.ListAPIView):
     ordering = ["-created_at"]
 
     def get_permissions(self):
+        """Return appropriate permissions based on HTTP method."""
         if self.request.method == "GET":
             return [AllowAny()]
         return [IsAuthenticated(), IsTenantHost()]

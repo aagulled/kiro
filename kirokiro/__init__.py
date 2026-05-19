@@ -1,0 +1,1 @@
+"""Kirokiro project package init."""

@@ -1,1 +1,1 @@
-default_app_config = 'apps.activity.apps.ActivityConfig'
+"""Activity logging and audit app."""

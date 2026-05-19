@@ -1,1 +1,1 @@
-default_app_config = 'apps.search.apps.SearchConfig'
+"""Search and indexing app."""

@@ -31,10 +31,6 @@ class IsTenantUser(permissions.BasePermission):
         return (
             hasattr(request.user, "tenant")
             and request.user.tenant == tenant
-        )
-        return (
-            hasattr(request.user, "tenant")
-            and request.user.tenant == tenant
             and request.user.is_active
         )
 
@@ -170,5 +166,3 @@ class CanManageProperty(permissions.BasePermission):
 
         # Admins can manage all properties
         return request.user.role == "admin"
-
-        return False

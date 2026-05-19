@@ -1,3 +1,4 @@
+"""Users app configuration with custom auth."""
 from django.apps import AppConfig
 
 

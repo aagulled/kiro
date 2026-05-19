@@ -1,3 +1,4 @@
+"""Core app configuration with shared utilities."""
 from django.apps import AppConfig
 
 

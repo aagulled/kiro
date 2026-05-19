@@ -1,1 +1,1 @@
-default_app_config = 'apps.analytics.apps.AnalyticsConfig'
+"""Analytics and metrics tracking app."""

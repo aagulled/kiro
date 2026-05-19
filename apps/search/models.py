@@ -113,7 +113,7 @@ class SearchQuery(TimestampMixin, models.Model):
 
 class PopularSearch(TimestampMixin, models.Model):
     """
-    Track popular search terms and trends.
+    Aggregated popular search term with count and last-seen timestamp.
     """
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

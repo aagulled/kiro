@@ -28,6 +28,7 @@ class PaymentListView(generics.ListAPIView):
     ordering = ["-created_at"]
 
     def get_queryset(self):
+        """Filter payments by ownership or staff access."""
         user = self.request.user
         if user.is_staff or user.is_superuser:
             return Payment.objects.all()
@@ -44,6 +45,7 @@ class PaymentDetailView(generics.RetrieveAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
+        """Filter payments by ownership or staff access."""
         user = self.request.user
         if user.is_staff or user.is_superuser:
             return Payment.objects.all()

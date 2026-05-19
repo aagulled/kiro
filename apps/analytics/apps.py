@@ -1,3 +1,4 @@
+"""Analytics app configuration for metrics and reporting."""
 from django.apps import AppConfig
 
 

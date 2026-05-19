@@ -17,6 +17,7 @@ class PaymentSerializer(serializers.ModelSerializer):
     total_amount = serializers.SerializerMethodField()
 
     def get_total_amount(self, obj):
+        """Compute total payment amount including commission."""
         return obj.amount + obj.commission_amount
 
     class Meta:

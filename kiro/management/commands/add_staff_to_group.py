@@ -1,3 +1,6 @@
+"""
+Management command to assign staff users to the Staff group.
+"""
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import Group
 from kiro.models import User
@@ -6,6 +9,7 @@ class Command(BaseCommand):
     help = 'Add existing staff users to the Staff group'
 
     def handle(self, *args, **options):
+        """Bulk-assign existing staff-role users to Django auth Group."""
         staff_group, _ = Group.objects.get_or_create(name="Staff")
         staff_users = User.objects.filter(role='staff')
         for user in staff_users:

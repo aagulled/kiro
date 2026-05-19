@@ -143,7 +143,7 @@ class PaymentAdmin(admin.ModelAdmin):
             'fields': ('id', 'booking', 'user', 'amount', 'currency')
         }),
         (_('Payment Details'), {
-            'fields': ('payment_method', 'provider', 'transaction_id', 'payment_gateway')
+            'fields': ('payment_method', 'transaction_id', 'payment_gateway')
         }),
         (_('Status'), {
             'fields': ('status', 'processed_at')
