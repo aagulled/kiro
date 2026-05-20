@@ -52,9 +52,18 @@ class ActivityService:
         # Get IP address if request is provided
         ip_address = self._get_client_ip(request) if request else None
         
-        # Log the activity (placeholder implementation)
+        from apps.activity.models import ActivityLog
+
+        # Create and save ActivityLog entry
+        activity_log = ActivityLog.objects.create(
+            action_type=action_type or 'api_call',
+            actor=user,
+            actor_ip=ip_address,
+            target_type=target_type or '',
+            target_id=str(target_id) if target_id else '',
+            target_name=target_name or '',
+            description=description or '',
+            severity=severity,
+        )
         self.logger.info(f"Activity logged: {action_type} by {user} on {target_type} {target_id}")
-        if description:
-            self.logger.info(f"Description: {description}")
-        if ip_address:
-            self.logger.info(f"IP Address: {ip_address}")
+        return activity_log

@@ -48,25 +48,46 @@ class NotificationService:
         return Preferences()
     
     def create_notification_preferences(self, user):
-        """Create default NotificationPreference row for user (stub)."""
-        # This is a placeholder - would normally create NotificationPreference records
-        pass
-        
+        """Create default NotificationPreference row for user."""
+        from apps.notifications.models import NotificationPreference
+        NotificationPreference.objects.get_or_create(
+            user=user,
+            defaults={
+                'email_notifications': True,
+                'sms_notifications': False,
+                'push_notifications': True,
+            }
+        )
+
     def send_notification(self, user, title, message, notification_type='system', 
-                          channels=None, priority='medium', content_object=None):
-        """Create Notification record and dispatch to requested channels (stub)."""
+                           channels=None, priority='medium', content_object=None):
+        """Create Notification record and dispatch to requested channels."""
         if channels is None:
             channels = ['in_app']
             
-        # Log the notification attempt
-        self.logger.info(f"Sending {notification_type} notification to user {user.email}: {title}")
-        
-        # In a real implementation, this would:
-        # 1. Create a Notification record in the database
-        # 2. Send via email if 'email' in channels
-        # 3. Send via SMS if 'sms' in channels  
-        # 4. Send via push if 'push' in channels
-        # 5. Store in-app notification
-        
-        # For now, just log and return success
-        return True
+        from apps.notifications.models import Notification
+        from django.contrib.contenttypes.models import ContentType
+
+        # Create in-app Notification record
+        notification = Notification.objects.create(
+            user=user,
+            title=title,
+            message=message,
+            notification_type=notification_type,
+            priority=priority,
+        )
+        if content_object:
+            notification.content_type = ContentType.objects.get_for_model(content_object)
+            notification.object_id = content_object.id
+            notification.save()
+
+        # Dispatch to channels
+        prefs = self.get_user_preferences(user)
+        if 'email' in channels and prefs.email_notifications:
+            self.send_email_notification(
+                user.email, title, 'emails/notification.html', {'title': title, 'message': message}
+            )
+        # SMS/push would integrate with external providers here
+
+        self.logger.info(f"Notification sent: {notification_type} to {user.email}")
+        return notification
