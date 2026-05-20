@@ -3,7 +3,7 @@ Serializers for properties app.
 """
 from rest_framework import serializers
 
-from kiro.models import User
+from kiro.serializers import UserSerializer
 
 from .models import Amenity, Favorite, Property, PropertyDocument, PropertyImage
 
