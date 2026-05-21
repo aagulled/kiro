@@ -1,0 +1,29 @@
+# Logrotate config for Kirokiro
+# Install: cp deploy/logrotate/kirokiro /etc/logrotate.d/kirokiro
+
+/home/kirokiro/kirokiro/logs/*.log {
+    daily
+    missingok
+    rotate 14
+    compress
+    delaycompress
+    notifempty
+    create 0640 www-data www-data
+    sharedscripts
+    postrotate
+        systemctl reload gunicorn > /dev/null 2>&1 || true
+    endscript
+}
+
+/var/log/gunicorn/*.log {
+    daily
+    missingok
+    rotate 14
+    compress
+    delaycompress
+    notifempty
+    create 0640 www-data adm
+    postrotate
+        systemctl reload gunicorn > /dev/null 2>&1 || true
+    endscript
+}

@@ -16,6 +16,13 @@ env = environ.Env(
     JWT_ACCESS_TOKEN_LIFETIME=(int, 60),
     JWT_REFRESH_TOKEN_LIFETIME=(int, 1440),
     RATE_LIMIT=(str, "100/hour"),
+<<<<<<< HEAD
+=======
+    CSRF_TRUSTED_ORIGINS=(list, []),
+    CORS_ALLOWED_ORIGINS=(list, []),
+    SENTRY_DSN=(str, ""),
+    USE_S3=(bool, False),
+>>>>>>> 39a4b62 (Initial commit)
 )
 
 # Read .env file
@@ -145,6 +152,7 @@ ADMIN_SITE_HEADER = "Welcome to KiroKiro"
 ADMIN_SITE_TITLE = "KiroKiro Administration"
 ADMIN_INDEX_TITLE = "Welcome to KiroKiro Administration"
 
+<<<<<<< HEAD
 # CSRF Settings
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
@@ -159,6 +167,34 @@ CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to read for debugging if needed
 CSRF_COOKIE_SECURE = False    # Set to True in production with HTTPS
 CSRF_USE_SESSIONS = False
 
+=======
+# CSRF & Cookie Settings (production values overridden below when DEBUG=False)
+CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS") or [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+]
+SESSION_COOKIE_AGE = 1209600
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SECURE = False
+CSRF_USE_SESSIONS = False
+
+# Production security (enabled when DEBUG=False)
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    USE_X_FORWARDED_HOST = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    X_FRAME_OPTIONS = "DENY"
+
+>>>>>>> 39a4b62 (Initial commit)
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "Europe/London"
@@ -198,6 +234,23 @@ STORAGES = {
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+<<<<<<< HEAD
+=======
+if env("USE_S3", default=False):
+    AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
+    AWS_S3_REGION_NAME = env("AWS_S3_REGION_NAME", default="us-east-1")
+    AWS_S3_CUSTOM_DOMAIN = env("AWS_S3_CUSTOM_DOMAIN", default=None)
+    AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
+    AWS_DEFAULT_ACL = None
+    STORAGES["default"] = {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    }
+    if AWS_S3_CUSTOM_DOMAIN:
+        MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/"
+
+>>>>>>> 39a4b62 (Initial commit)
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -273,13 +326,20 @@ SIMPLE_JWT = {
 }
 
 # CORS Settings
+<<<<<<< HEAD
 CORS_ALLOWED_ORIGINS = [
+=======
+CORS_ALLOWED_ORIGINS = env("CORS_ALLOWED_ORIGINS") or [
+>>>>>>> 39a4b62 (Initial commit)
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:8080",
     "http://127.0.0.1:8080",
 ]
+<<<<<<< HEAD
 
+=======
+>>>>>>> 39a4b62 (Initial commit)
 CORS_ALLOW_CREDENTIALS = True
 
 # Authentication backends
@@ -287,6 +347,7 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
 ]
 
+<<<<<<< HEAD
 # Cache settings
 CACHES = {
     "default": {
@@ -306,10 +367,40 @@ CACHES = {
 # Celery settings
 CELERY_BROKER_URL = None
 CELERY_RESULT_BACKEND = None
+=======
+# Cache settings (Redis in production if REDIS_URL set)
+REDIS_URL = env("REDIS_URL", default=None)
+if REDIS_URL:
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": REDIS_URL,
+            "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient"},
+        },
+        "axes": {"BACKEND": "django_redis.cache.RedisCache", "LOCATION": REDIS_URL},
+        "properties": {"BACKEND": "django_redis.cache.RedisCache", "LOCATION": REDIS_URL},
+        "users": {"BACKEND": "django_redis.cache.RedisCache", "LOCATION": REDIS_URL},
+    }
+else:
+    CACHES = {
+        "default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"},
+        "axes": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"},
+        "properties": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"},
+        "users": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"},
+    }
+
+# Celery settings (Redis for broker/result)
+CELERY_BROKER_URL = env("CELERY_BROKER_URL", default=REDIS_URL)
+CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND", default=REDIS_URL)
+>>>>>>> 39a4b62 (Initial commit)
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = TIME_ZONE
+<<<<<<< HEAD
+=======
+CELERY_TASK_ALWAYS_EAGER = DEBUG  # sync in dev
+>>>>>>> 39a4b62 (Initial commit)
 
 # Email settings
 EMAIL_BACKEND = env("EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend")
@@ -330,6 +421,20 @@ SPECTACULAR_SETTINGS = {
     "SCHEMA_PATH_PREFIX": r"/api/v[0-9]",
 }
 
+<<<<<<< HEAD
+=======
+SENTRY_DSN = env("SENTRY_DSN")
+if SENTRY_DSN:
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        integrations=[DjangoIntegration()],
+        environment=env("SENTRY_ENVIRONMENT", default="production"),
+        traces_sample_rate=0.1 if not DEBUG else 1.0,
+    )
+
+>>>>>>> 39a4b62 (Initial commit)
 # Logging
 LOGGING = {
     "version": 1,

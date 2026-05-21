@@ -1,0 +1,68 @@
+# =============================================================================
+# Kirokiro .gitattributes
+# =============================================================================
+
+# Auto-detect text files and normalize to LF line endings (Unix standard)
+* text=auto eol=lf
+
+# Explicitly set text files to LF
+*.py            text eol=lf
+*.sh            text eol=lf
+*.md            text eol=lf
+*.rst           text eol=lf
+*.txt           text eol=lf
+*.yml           text eol=lf
+*.yaml          text eol=lf
+*.json          text eol=lf
+*.toml          text eol=lf
+*.ini           text eol=lf
+*.cfg           text eol=lf
+*.conf          text eol=lf
+*.service       text eol=lf
+*.env.example   text eol=lf
+*.example       text eol=lf
+
+# Shell scripts should be executable
+*.sh            text eol=lf
+
+# Binary files - never convert line endings
+*.png           binary
+*.jpg           binary
+*.jpeg          binary
+*.gif           binary
+*.ico           binary
+*.bmp           binary
+*.tiff          binary
+*.webp          binary
+*.svg           binary
+*.woff          binary
+*.woff2         binary
+*.ttf           binary
+*.eot           binary
+*.otf           binary
+*.pdf           binary
+*.zip           binary
+*.tar           binary
+*.gz            binary
+*.7z            binary
+*.db            binary
+*.sqlite        binary
+*.sqlite3       binary
+
+# Mark generated / build artifacts so GitHub linguist ignores them in language stats
+*.pyc           linguist-generated
+__pycache__/    linguist-generated
+staticfiles/    linguist-generated
+media/          linguist-generated
+logs/           linguist-generated
+.pytest_cache/  linguist-generated
+.mypy_cache/    linguist-generated
+.coverage       linguist-generated
+htmlcov/        linguist-generated
+
+# Mark deployment scripts as shell (helps with syntax highlighting)
+deploy/scripts/*.sh   linguist-language=Shell
+deploy/backup/*.sh    linguist-language=Shell
+
+# Treat Nginx configs as Nginx language
+*.conf          linguist-language=Nginx Configuration

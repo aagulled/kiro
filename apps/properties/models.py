@@ -91,6 +91,10 @@ class PropertyCategory(models.TextChoices):
     COMMERCIAL = "commercial", _("Commercial")
     LAND = "land", _("Land")
     CAMPING_SITE = "camping_site", _("Camping Site")
+<<<<<<< HEAD
+=======
+    HOTEL_ROOM = "hotel_room", _("Hotel Room")
+>>>>>>> 39a4b62 (Initial commit)
     OTHER = "other", _("Other")
 
 
