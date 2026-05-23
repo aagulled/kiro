@@ -11,8 +11,11 @@ from .models import (
     Favorite,
     Inquiry,
     Review,
+<<<<<<< HEAD
     Booking,
     Payment,
+=======
+>>>>>>> e13cee5 (update)
     User,
 )
 
@@ -46,5 +49,8 @@ admin.site.register(PropertyDocument)
 admin.site.register(Favorite)
 admin.site.register(Inquiry)
 admin.site.register(Review)
+<<<<<<< HEAD
 admin.site.register(Booking)
 admin.site.register(Payment)
+=======
+>>>>>>> e13cee5 (update)

@@ -15,12 +15,18 @@ from django.db import models
 
 from .models import (
     Amenity,
+<<<<<<< HEAD
     Booking,
+=======
+>>>>>>> e13cee5 (update)
     Favorite,
     Inquiry,
     Message,
     Notification,
+<<<<<<< HEAD
     Payment,
+=======
+>>>>>>> e13cee5 (update)
     Property,
     PropertyDocument,
     PropertyImage,
@@ -29,14 +35,20 @@ from .models import (
 )
 from .serializers import (
     AmenitySerializer,
+<<<<<<< HEAD
     BookingSerializer,
+=======
+>>>>>>> e13cee5 (update)
     ChangePasswordSerializer,
     FavoriteSerializer,
     GroupSerializer,
     InquirySerializer,
     MessageSerializer,
     NotificationSerializer,
+<<<<<<< HEAD
     PaymentSerializer,
+=======
+>>>>>>> e13cee5 (update)
     PropertySerializer,
     PropertyDocumentSerializer,
     PropertyImageSerializer,
@@ -150,6 +162,7 @@ class FavoriteViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
 
+<<<<<<< HEAD
 class BookingViewSet(viewsets.ModelViewSet):
     """ViewSet for Booking model."""
 
@@ -189,6 +202,8 @@ class PaymentViewSet(viewsets.ModelViewSet):
 
 
 
+=======
+>>>>>>> e13cee5 (update)
 class MessageViewSet(viewsets.ModelViewSet):
     """ViewSet for Message model."""
 

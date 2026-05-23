@@ -27,6 +27,10 @@ urlpatterns = [
     # API Endpoints
     path("api/v1/", include("kiro.urls")),
     path("api/v1/payments/", include("apps.payment.urls")),
+<<<<<<< HEAD
+=======
+    path("api/v1/bookings/", include("apps.bookings.urls")),
+>>>>>>> e13cee5 (update)
  
     # Health check
     # path("health/", include("apps.core.urls")),

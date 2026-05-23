@@ -448,9 +448,13 @@ class PropertyCategory(models.TextChoices):
     LAND = "land", _("Land")
     CAMPING_SITE = "camping_site", _("Camping Site")
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     HOTEL_ROOM = "hotel_room", _("Hotel Room")
 >>>>>>> 39a4b62 (Initial commit)
+=======
+    HOTEL_ROOM = "hotel_room", _("Hotel Room")
+>>>>>>> e13cee5 (update)
     OTHER = "other", _("Other")
 
 
@@ -859,11 +863,19 @@ class Review(models.Model):
         User, on_delete=models.CASCADE, related_name="kiro_reviews"
     )
     booking = models.OneToOneField(
+<<<<<<< HEAD
         "Booking",
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
         related_name="review",
+=======
+        "bookings.Booking",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="kiro_review",
+>>>>>>> e13cee5 (update)
     )
 
     # Review content
@@ -916,6 +928,7 @@ class Review(models.Model):
         valid_ratings = [r for r in ratings if r is not None]
         return sum(valid_ratings) / len(valid_ratings) if valid_ratings else None
 
+<<<<<<< HEAD
 
 class BookingStatus(models.TextChoices):
     """Booking status choices."""
@@ -1136,4 +1149,9 @@ class Payment(models.Model):
             self.refund_amount = refund_amount
         self.save(update_fields=["status", "refunded_at", "refund_amount"])
 
+=======
+# NOTE: Booking, Payment, BookingStatus, and PaymentStatus models have been moved
+# to apps.bookings and apps.payment to avoid duplication.
+# The old definitions were removed during refactoring (May 2026).
+>>>>>>> e13cee5 (update)
 

@@ -6,13 +6,19 @@ from rest_framework.routers import DefaultRouter
 
 from .views import (
     AmenityViewSet,
+<<<<<<< HEAD
     BookingViewSet,
+=======
+>>>>>>> e13cee5 (update)
     ChangePasswordView,
     FavoriteViewSet,
     GroupViewSet,
     InquiryViewSet,
     MessageViewSet,
+<<<<<<< HEAD
     PaymentViewSet,
+=======
+>>>>>>> e13cee5 (update)
     PropertyDocumentViewSet,
     PropertyImageViewSet,
     PropertyViewSet,
@@ -33,8 +39,11 @@ router.register(r"property-documents", PropertyDocumentViewSet)
 router.register(r"inquiries", InquiryViewSet)
 router.register(r"reviews", ReviewViewSet)
 router.register(r"favorites", FavoriteViewSet)
+<<<<<<< HEAD
 router.register(r"bookings", BookingViewSet)
 router.register(r"booking-payments", PaymentViewSet)
+=======
+>>>>>>> e13cee5 (update)
 router.register(r"messages", MessageViewSet)
 
 urlpatterns = router.urls + [

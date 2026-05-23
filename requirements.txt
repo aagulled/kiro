@@ -68,6 +68,10 @@ django-environ>=0.11.0
 
 # Logging
 structlog>=24.1.0
+<<<<<<< HEAD
+=======
+python-json-logger>=2.0.0
+>>>>>>> e13cee5 (update)
 
 # Encryption
 cryptography>=42.0.0

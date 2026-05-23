@@ -92,9 +92,13 @@ class PropertyCategory(models.TextChoices):
     LAND = "land", _("Land")
     CAMPING_SITE = "camping_site", _("Camping Site")
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     HOTEL_ROOM = "hotel_room", _("Hotel Room")
 >>>>>>> 39a4b62 (Initial commit)
+=======
+    HOTEL_ROOM = "hotel_room", _("Hotel Room")
+>>>>>>> e13cee5 (update)
     OTHER = "other", _("Other")
 
 

@@ -71,6 +71,7 @@ class KiroConfig(AppConfig):
                     # Ignore errors during app initialization
                     pass
 
+<<<<<<< HEAD
         # Iterate over all models in the project
         for model in apps.get_models():
             # Check if the model is not already registered to avoid duplicates
@@ -85,3 +86,8 @@ class KiroConfig(AppConfig):
 
             # Register the model with default ModelAdmin
             admin.site.register(model)
+=======
+        # NOTE: We intentionally do NOT auto-register all models here.
+        # Each app registers its own models in its own admin.py (e.g. apps/bookings/admin.py).
+        # This prevents duplicate sections in the admin panel.
+>>>>>>> e13cee5 (update)

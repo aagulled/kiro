@@ -25,7 +25,11 @@ def create_notification_preferences(sender, instance, created, **kwargs):
 # Signal handlers will be connected in AppConfig.ready() to avoid database access during import
 
 
+<<<<<<< HEAD
 @receiver(post_save, sender='kiro.Payment')
+=======
+@receiver(post_save, sender='payment.Payment')
+>>>>>>> e13cee5 (update)
 def notify_payment_successful(sender, instance, created, **kwargs):
     """Post-save receiver: send payment success notification when status=completed."""
     if not created and instance.status == 'completed' and instance.user:

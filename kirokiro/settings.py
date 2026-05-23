@@ -17,6 +17,7 @@ env = environ.Env(
     JWT_REFRESH_TOKEN_LIFETIME=(int, 1440),
     RATE_LIMIT=(str, "100/hour"),
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     CSRF_TRUSTED_ORIGINS=(list, []),
     CORS_ALLOWED_ORIGINS=(list, []),
@@ -27,6 +28,12 @@ env = environ.Env(
 
 # Read .env file
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+=======
+)
+
+# Read environment configuration (from kirokiro/kiro file)
+environ.Env.read_env(os.path.join(BASE_DIR, "kirokiro", "kiro"))
+>>>>>>> e13cee5 (update)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")
@@ -153,6 +160,9 @@ ADMIN_SITE_TITLE = "KiroKiro Administration"
 ADMIN_INDEX_TITLE = "Welcome to KiroKiro Administration"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e13cee5 (update)
 # CSRF Settings
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
@@ -167,6 +177,7 @@ CSRF_COOKIE_HTTPONLY = False  # Allow JavaScript to read for debugging if needed
 CSRF_COOKIE_SECURE = False    # Set to True in production with HTTPS
 CSRF_USE_SESSIONS = False
 
+<<<<<<< HEAD
 =======
 # CSRF & Cookie Settings (production values overridden below when DEBUG=False)
 CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS") or [
@@ -195,6 +206,8 @@ if not DEBUG:
     X_FRAME_OPTIONS = "DENY"
 
 >>>>>>> 39a4b62 (Initial commit)
+=======
+>>>>>>> e13cee5 (update)
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "Europe/London"
@@ -235,6 +248,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 if env("USE_S3", default=False):
     AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
@@ -251,6 +265,8 @@ if env("USE_S3", default=False):
         MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/"
 
 >>>>>>> 39a4b62 (Initial commit)
+=======
+>>>>>>> e13cee5 (update)
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -327,19 +343,27 @@ SIMPLE_JWT = {
 
 # CORS Settings
 <<<<<<< HEAD
+<<<<<<< HEAD
 CORS_ALLOWED_ORIGINS = [
 =======
 CORS_ALLOWED_ORIGINS = env("CORS_ALLOWED_ORIGINS") or [
 >>>>>>> 39a4b62 (Initial commit)
+=======
+CORS_ALLOWED_ORIGINS = [
+>>>>>>> e13cee5 (update)
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://localhost:8080",
     "http://127.0.0.1:8080",
 ]
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 39a4b62 (Initial commit)
+=======
+
+>>>>>>> e13cee5 (update)
 CORS_ALLOW_CREDENTIALS = True
 
 # Authentication backends
@@ -348,6 +372,9 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e13cee5 (update)
 # Cache settings
 CACHES = {
     "default": {
@@ -367,6 +394,7 @@ CACHES = {
 # Celery settings
 CELERY_BROKER_URL = None
 CELERY_RESULT_BACKEND = None
+<<<<<<< HEAD
 =======
 # Cache settings (Redis in production if REDIS_URL set)
 REDIS_URL = env("REDIS_URL", default=None)
@@ -393,14 +421,19 @@ else:
 CELERY_BROKER_URL = env("CELERY_BROKER_URL", default=REDIS_URL)
 CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND", default=REDIS_URL)
 >>>>>>> 39a4b62 (Initial commit)
+=======
+>>>>>>> e13cee5 (update)
 CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = TIME_ZONE
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 CELERY_TASK_ALWAYS_EAGER = DEBUG  # sync in dev
 >>>>>>> 39a4b62 (Initial commit)
+=======
+>>>>>>> e13cee5 (update)
 
 # Email settings
 EMAIL_BACKEND = env("EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend")
@@ -422,6 +455,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 SENTRY_DSN = env("SENTRY_DSN")
 if SENTRY_DSN:
@@ -435,6 +469,8 @@ if SENTRY_DSN:
     )
 
 >>>>>>> 39a4b62 (Initial commit)
+=======
+>>>>>>> e13cee5 (update)
 # Logging
 LOGGING = {
     "version": 1,

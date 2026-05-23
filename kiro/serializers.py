@@ -8,12 +8,18 @@ from django.contrib.auth.models import Group
 
 from .models import (
     Amenity,
+<<<<<<< HEAD
     Booking,
+=======
+>>>>>>> e13cee5 (update)
     Favorite,
     Inquiry,
     Message,
     Notification,
+<<<<<<< HEAD
     Payment,
+=======
+>>>>>>> e13cee5 (update)
     Property,
     PropertyDocument,
     PropertyImage,
@@ -89,6 +95,7 @@ class PropertyDocumentSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+<<<<<<< HEAD
 class PropertySerializer(serializers.ModelSerializer):
     """Serializer for Property model."""
 
@@ -136,6 +143,11 @@ class PropertySerializer(serializers.ModelSerializer):
             "created_at",
         ]
         read_only_fields = ["id", "slug", "created_at", "updated_at"]
+=======
+# PropertySerializer has been moved to apps/properties/serializers.py for proper app separation.
+from apps.properties.serializers import PropertySerializer as _PropertySerializer
+PropertySerializer = _PropertySerializer  # re-export for backward compatibility in kiro app
+>>>>>>> e13cee5 (update)
 
 
 class InquirySerializer(serializers.ModelSerializer):
@@ -171,6 +183,7 @@ class FavoriteSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+<<<<<<< HEAD
 class BookingSerializer(serializers.ModelSerializer):
     """Serializer for Booking model."""
 
@@ -199,6 +212,10 @@ class PaymentSerializer(serializers.ModelSerializer):
 
 
 
+=======
+# BookingSerializer has been moved to apps/bookings/serializers.py
+# PaymentSerializer has been moved to apps/payment/serializers.py
+>>>>>>> e13cee5 (update)
 
 class MessageSerializer(serializers.ModelSerializer):
     """Serializer for Message model."""

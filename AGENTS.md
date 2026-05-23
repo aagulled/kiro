@@ -48,7 +48,11 @@ mypy .
 
 ## Project Structure
 
+<<<<<<< HEAD
 - **Settings:** `kirokiro/settings.py` (environment via `.env`)
+=======
+- **Settings:** `kirokiro/settings.py` (environment variables)
+>>>>>>> e13cee5 (update)
 - **URLs:** `kirokiro/urls.py`
 - **Apps:** `/apps/` directory contains all feature apps
 - **Custom User Model:** `kiro.User` (defined in kiro app)
@@ -67,11 +71,19 @@ mypy .
 
 ## Environment
 
+<<<<<<< HEAD
 - Copy `.env.example` to `.env` and configure:
   - `SECRET_KEY` (required)
   - `DEBUG` (bool)
   - `ALLOWED_HOSTS` (list)
   - Database URL (via `env.db_url()`)
+=======
+Activate the `kiro` environment and set variables (or `source kirokiro/kiro`):
+  - `SECRET_KEY` (required)
+  - `DEBUG` (bool)
+  - `ALLOWED_HOSTS` (list)
+  - `DATABASE_URL` (PostgreSQL, e.g. postgres://user:pass@localhost:5432/kirokiro)
+>>>>>>> e13cee5 (update)
   - Email settings
   - JWT token lifetimes
 

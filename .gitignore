@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e13cee5 (update)
 # Python
 __pycache__/
 *.py[cod]
@@ -10,7 +13,10 @@ env/
 pyvenv.cfg
 
 # Django
+<<<<<<< HEAD
 db.sqlite3
+=======
+>>>>>>> e13cee5 (update)
 media/
 staticfiles/
 
@@ -18,9 +24,15 @@ staticfiles/
 logs/
 *.log
 
+<<<<<<< HEAD
 # Environment variables (IMPORTANT for Postgres creds)
 .env
 .env.*
+=======
+# Local config / secrets
+# (your personal secrets file, e.g. kirokiro/kiro or any name you choose)
+kirokiro/kiro
+>>>>>>> e13cee5 (update)
 
 # IDE
 .vscode/
@@ -29,6 +41,7 @@ logs/
 # OS
 .DS_Store
 Thumbs.db
+<<<<<<< HEAD
 =======
 # =============================================================================
 # Kirokiro - Comprehensive .gitignore
@@ -178,3 +191,5 @@ yarn-error.log*
 *.temp
 *.old
 >>>>>>> 39a4b62 (Initial commit)
+=======
+>>>>>>> e13cee5 (update)

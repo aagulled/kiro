@@ -242,3 +242,54 @@ class FavoriteSerializer(serializers.ModelSerializer):
         model = Favorite
         fields = ["id", "property", "property_details", "created_at"]
         read_only_fields = ["id", "created_at"]
+<<<<<<< HEAD
+=======
+
+class PropertySerializer(serializers.ModelSerializer):
+    """Serializer for Property model (detailed)."""
+
+    owner = UserSerializer(read_only=True)
+    amenities = AmenitySerializer(many=True, read_only=True)
+    images = PropertyImageSerializer(many=True, read_only=True)
+    documents = PropertyDocumentSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Property
+        fields = [
+            "id",
+            "title",
+            "slug",
+            "description",
+            "category",
+            "listing_type",
+            "status",
+            "address",
+            "city",
+            "state",
+            "postal_code",
+            "country",
+            "bedrooms",
+            "bathrooms",
+            "total_area",
+            "built_area",
+            "lot_size",
+            "year_built",
+            "sale_price",
+            "rent_price",
+            "currency",
+            "furnished",
+            "parking_spaces",
+            "pets_allowed",
+            "featured_image",
+            "video_url",
+            "virtual_tour_url",
+            "owner",
+            "amenities",
+            "images",
+            "documents",
+            "view_count",
+            "inquiry_count",
+            "created_at",
+        ]
+        read_only_fields = ["id", "slug", "created_at", "updated_at"]
+>>>>>>> e13cee5 (update)

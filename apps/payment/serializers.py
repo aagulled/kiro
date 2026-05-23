@@ -3,8 +3,15 @@ Serializers for payments app.
 """
 from rest_framework import serializers
 
+<<<<<<< HEAD
 from kiro.models import Booking, User
 from kiro.serializers import BookingSerializer, UserSerializer
+=======
+from apps.bookings.models import Booking
+from kiro.models import User
+from apps.bookings.serializers import BookingSerializer
+from kiro.serializers import UserSerializer
+>>>>>>> e13cee5 (update)
 
 
 class PaymentSerializer(serializers.ModelSerializer):

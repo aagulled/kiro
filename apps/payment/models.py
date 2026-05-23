@@ -48,7 +48,11 @@ class Payment(models.Model):
 
     # Relationships
     booking = models.ForeignKey(
+<<<<<<< HEAD
         'kiro.Booking', on_delete=models.CASCADE, related_name="app_payments"
+=======
+        'bookings.Booking', on_delete=models.CASCADE, related_name="app_payments"
+>>>>>>> e13cee5 (update)
     )
     user = models.ForeignKey(
         'kiro.User', on_delete=models.CASCADE, related_name="app_user_payments"
